@@ -1,3 +1,7 @@
+# 스프링 MVC 1편 - 백엔드 웹 개발 핵심 기술
+- 출처 : 김영한 - 스프링 MVC 1편 - 백엔드 웹 개발 핵심 기술
+- 인프런 강의 : 김영한 - 스프링 MVC 1편 - 백엔드 웹 개발 핵심 기술 공부 내용 정리 글 입니다.
+
 # Hello 서블릿
 - @ServletComponentScan
   - 패키지 안에 있는 서블릿을 자동 등록 
@@ -25,4 +29,17 @@
 1. URL을 호출 하면 request, response 객체를 만들어서 싱글톤에 띄어져 있는 helloServlet을 호출 해줌
 2. helloServlet을 호출 하면서 request와 response를 넘겨줌
 3. 데이터를 정리하고 response 객체를 반환 하면 웹브라우져에 데이터가 보여짐
+
+# HttpServletRequsest - 개요
+- 서블릿은 개발자가 HTTP 요청 메시지를 편리하게 사용할 수 있도록 개발자 대신에 HTTP 요청 메시지를 파싱하고 응답에 대한 데이터는 HttpServletRequest 객체에 담아서 제공
+
+#### 임시 저장소 기능
+- 해당 HTTP 요청이 시작부터 끝날 때 까지 유지되는 임시 저장소 기능
+http 안에 작은 저장소가 있어서 http 요청 메시지가 살아 있는 동안 쓸 수 있게 setAttribute에 값을 지정 하고 getAttibute로 조회 가능
+
+#### 세션 관리 기능
+- 로그인 기능
+- request.getSession(create:true)
+
+
 
