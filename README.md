@@ -111,6 +111,21 @@ request.getParameter는 GET 쿼리파라미터 와 POST HTML Form 둘다 꺼내�
 ![image](https://github.com/wjdwodnr5452/servlet/assets/90361061/2b472f90-d189-40f0-8166-eb8ae1a1ff84)
 
 
+# HTTP 요청 데이터 - API 메시지 바디 - 단순 텍스트
+### HTTP message body에 데이터를 직접 담아서 요청
+- HTTP API에서 주로 사용, JSON, XML, TEXT
+- 데이터 형식은 주로 JSON 사용
+- POST,PUT,PATCH
+- 예전에는 XML을 썻지만 요즘은 JSON을 많이 씀
+- API들은 서버랑 서버가 통신할 때 아니면 안드로이드 아이폰 같은 앱에서 요청을 할 때
+- 요즘에는 React나 Vue.js 같은 웹 클라이언트에서 javaScript로 요청 할 때
+
+```
+ServletInputStream inputStream = request.getInputStream(); // ServletInputStream으로 받으면  request.getInputStream을 바이트 코드로 받음
+String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);// 바이트를 문자열로 변환
+```
+  
+  
 
 
 
