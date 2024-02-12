@@ -17,7 +17,9 @@ public class RequestBodyStringServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletInputStream inputStream = request.getInputStream(); // ServletInputStream으로 받으면  request.getInputStream을 바이트 코드로 받음
+        ServletInputStream inputStream = request.getInputStream(); // ServletInputSt
+
+        // ream으로 받으면  request.getInputStream을 바이트 코드로 받음
         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);// 바이트를 문자열로 변환
 
         System.out.println("messageBody = " + messageBody);
