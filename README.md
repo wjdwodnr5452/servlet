@@ -62,6 +62,40 @@ application/x-www-form-urlencoded는 html form을 통해서 전달된 정보
 - 데이터 형식은 주로 JSON 사용
 - POST, PUT, PATCH
 
+# Http 요청 데이터 - GET 쿼리 파라미터
+- 쿼리 파라미터는 url에 다음과 같이 ?를 시작으로 보낼 수 있음 추가 파라미터는 &로 구분하면 됨
+#### http://localhost:8080/request-header?username=hello&age=20
+
+클라이언트에서 서버로 보내면 서버에서는 HttpServletRequest가 제공하는 메서드를 통해 쿼리 파라미터를 조회 할 수 있음
+
+#### 전체 파라미터 조회
+```
+// getParameterNames 모든 요청 파라미터를 꺼낼 수 있다.
+request.getParameterNames().asIterator().forEachRemaining(paramName -> System.out.println(paramName + "=" + request.getParameter(paramName)));
+```
+
+#### 단일 파라미터 조회
+```
+String username = request.getParameter("username");
+String age = request.getParameter("age");
+```
+
+#### 복수 파라미터 조회
+```
+String[] usernames = request.getParameterValues("username");
+for (String name : usernames) {
+  System.out.println("name = " + name);
+}
+```
+
+#### 복수 파라미터에서 단일 파라미터 조회
+username=hello&username=hello2 같은 파라미터 이름은 하나인데 값이 중복이면 getParameterValues 를 사용 해야한다. 중복일 때 getParameter를 사용시 첫번째 값을 반환 한다.
+주로 중복으로 보내는 경우는 없음
+
+
+
+
+
 
 
 
