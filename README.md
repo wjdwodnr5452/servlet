@@ -124,7 +124,21 @@ request.getParameter는 GET 쿼리파라미터 와 POST HTML Form 둘다 꺼내�
 ServletInputStream inputStream = request.getInputStream(); // ServletInputStream으로 받으면  request.getInputStream을 바이트 코드로 받음
 String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);// 바이트를 문자열로 변환
 ```
-  
+
+
+# HTTP 요청 데이터 - API 메시지 바디 - JSON
+- json 형식은 json을 그대로 사용 하지 않고 객체로 바꿔서 사용
+- JSON 결과를 파싱해서 사용할 수 있는 자바 객체로 변환하려면 Jackson, Gson 같은 JSON 변환 라이브러리를 추가해서 사용해야함 스프링 부트로 Spring MVC를 선택하면 기본으로 Jackson 라이버리 'ObjectMapper'를 함께 제공한다.
+```
+// 제이슨 라이브러리 중에 잭슨 라이브러리가 있다.
+private ObjectMapper objectMapper = new ObjectMapper();
+```
+
+참고 : HTML form 데이터도 메시지 바디를 통해 전송되므로 직접 읽을 수 있음 하지만 편리한 파라미터 조회 기능 request.getParameter(...) 을 이미 제공하기 때문에 파라미터 조회 기능을 사용하면 됨
+
+ 
+
+ 
   
 
 
