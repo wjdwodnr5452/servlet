@@ -136,7 +136,15 @@ private ObjectMapper objectMapper = new ObjectMapper();
 
 참고 : HTML form 데이터도 메시지 바디를 통해 전송되므로 직접 읽을 수 있음 하지만 편리한 파라미터 조회 기능 request.getParameter(...) 을 이미 제공하기 때문에 파라미터 조회 기능을 사용하면 됨
 
- 
+ # HttpServletResponse - 기본 사용법
+ - HttpServletResponse는 HTTP 응답 메시지를 생성 한다.
+ - HTTP 응답코드 지정 예) 200, 400, 500 등
+ - 헤더 생성
+ - 바디 생성
+
+#### 편의 기능 제공
+- Content-Type, 쿠기, Redirect
+  
 
  
   
