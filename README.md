@@ -146,7 +146,23 @@ private ObjectMapper objectMapper = new ObjectMapper();
 - Content-Type, 쿠기, Redirect
   
 
- 
+ # HTTP 응답 데이터 - 단순 텍스트, HTML
+- 단순 텍스트 응답 (writer.println("ok");)
+- HTML 응답
+- HTTP API - MessageBody JSON 응답
+```
+response.setContentType("text/html"); // 지정을 안해도 웹브라우져가 동작하는데 정석적으로 지정 해야함
+        response.setCharacterEncoding("utf-8");
+
+        PrintWriter writer = response.getWriter();
+        writer.println("<html>");
+        writer.println("<body>");
+        writer.println("    <div>안녕?</div>");
+        writer.println("</body>");
+        writer.println("</html>");
+```
+HTTP 응답으로 HTML을 변환할 때는 content-type을 text/html로 지정 해야 함
+
   
 
 
