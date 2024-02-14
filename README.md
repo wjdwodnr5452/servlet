@@ -163,6 +163,12 @@ response.setContentType("text/html"); // 지정을 안해도 웹브라우져가 
 ```
 HTTP 응답으로 HTML을 변환할 때는 content-type을 text/html로 지정 해야 함
 
+
+# HTTP 응답 데이터 - API JSON
+- HTTP API를 만들 때 주로 사용하는 것은 JSON 데이터이다.
+- HTTP 응답으로 JSON을 반환할 때는 content-type을 application/json로 지정해야 하며 Jackson 라이브러리가 제공하는 objectMapper.writeValueAsString()을 사용하면 객체를 JSON 문자로 변경 할 수 있음
+
+
   
 
 
