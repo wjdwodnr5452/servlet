@@ -207,7 +207,7 @@ PrintWriter w = response.getWriter();
 
 템플릿 엔진에는 JSP, Thymeleaf, Freemarker, Velocity 등이 있다.
 
-# jsp는 성능과 기능면에서 다른 템플릿 엔진과의 경쟁에서 밀리면서, 점점 사장되어 가는 추세임
+#### jsp는 성능과 기능면에서 다른 템플릿 엔진과의 경쟁에서 밀리면서, 점점 사장되어 가는 추세임
 
 
 
