@@ -213,11 +213,25 @@ PrintWriter w = response.getWriter();
 Status 200이 회색이면 캐시가 된것이다.
 
 
+# JSP로 회원 관리 웹 애플리케이션 만들기
 
+#### <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+- 첫 줄은 jsp 문서라는 뜻
 
+#### jsp는 자바 코드를 그대로 다 사용 할 수 있음
+- <%@ page import="hello.servlet.domain.member.MemberRepository" %>
+- <% ~~ %>
+  - 이 부분에 자바 코드를 입력 할 수 있음
+- <%= ~~ %>
+  - 이 부분에 자바 코드를 출력 할 수 있음
+ 
+#### 서블릿과 jsp 한계
+- 서블릿으로 개발 할 때 뷰 화면을 위한 HTML을 만드는 작업이 자바 코드에 섞여서 지저분하고 복잡 했다 jsp를 사용한 덕분에 뷰를 생성하는 HTML 작업을 깔끔하게 가져가고, 중간중간 동적으로 변경이 필요한 부분에만 자바 코들르 적용했다.
+- 하지만 jsp 코드를 보면 java 코드 데이터를 조회하는 리포지토리 등등 다양한 코드가 모두 jsp에 노출 됨, jsp가 너무 많은 역할 한다.
 
-
-
+#### mvc 패턴의 등장
+- 비즈니스 로직은 서블릿 처럼 다른곳에서 처리하고, jsp는 목적에 맞는 html로 화면(view)을 그리는 일에 집중 해야함 과거 개발자들도 모두 비숫한 고민이 있었고 그래서 mvc 패턴이 등장 했다
+  
 
 
 
