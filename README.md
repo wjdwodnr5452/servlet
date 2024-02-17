@@ -209,6 +209,10 @@ PrintWriter w = response.getWriter();
 
 #### jsp는 성능과 기능면에서 다른 템플릿 엔진과의 경쟁에서 밀리면서, 점점 사장되어 가는 추세임
 
+![image](https://github.com/wjdwodnr5452/servlet/assets/90361061/13c40b78-8390-4b42-8027-e755fe5f96de)
+Status 200이 회색이면 캐시가 된것이다.
+
+
 
 
 
