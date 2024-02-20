@@ -257,8 +257,27 @@ Status 200이 회색이면 캐시가 된것이다.
 #### 참고
 - 컨트롤러에 비즈니스 로직을 둘 수도 있지만, 이렇게 되면 컨트롤러가 너무 많은 역할을 담당한다. 그래서 일반적으로 비즈니스 로직은 서비스라는 계층을 별도로 만들어서 처리한다. 그리고 컨트롤러는 비즈니스 로직이 있는 서비스를 호출하는 담당한다. 참고로 비즈니스 로직을 변경하면 비즈니스 로직을 호출하는 컨트롤러의 코드도 변경될 수 있다.
 
+# MVC 패턴 - 적용
+- 서블릿을 컨트롤러로 사용하고, jsp를 뷰로 사용해서 MVC 패턴 적용
+- Model은 HttoServletRequest 객체를 사용한다. request 내부에 데이터 저장소를 가지고 있는데 request.setAttribute(), request.getAttribute()를 사용하면 데이터를 보관하고, 조회 할 수 있음
 
+#### dispatcher.forward() : 다른 서블릿이나 jsp로 이동할 수 있는 기능이다. 서버 내부에서 다시 호출이 발생한다.
+#### /WEB-INF : 이 경로안에 jsp가 있으면 외부에서 직접 jsp를 호출 할 수 없다. 우리가 기대하는 것은 항상 컨트롤러를 통해서 jsp를 호출 하는 것
 
+#### redirect vs forward
+- redirect : 리다이렉트는 실제 클라이언트(웹 브라우저)에 응답이 나갔다가, 클라이언트가 redirect 경로로 다시 요청한다. 따라서 클라이언트가 인지 할 수 있고, URL 경로도 실제로 변경된다.
+- forward : 포워드는 서버 내부에서 일어나는 호출이기 때문에 클라이언트가 전혀 인지하지 못한다.
+
+#### form action 경로
+```
+<form action="save" method="post">
+    username: <input type="text" name="username" />
+    age:      <input type="text" name="age" />
+    <button type="submit">전송</button>
+</form>
+```
+- form 안에 action에 경로를 /save를 하게 되면 절대 경로로 http://localhost:8080/save로 들어가 된다.
+- /save가 아닌 / 빼고 save를 하게 되면 상대 경로로 현재 url 속한 계층에 붙는다. http://localhost:8080/servlet-mvc/members/save
 
 
 
