@@ -279,6 +279,32 @@ Status 200이 회색이면 캐시가 된것이다.
 - form 안에 action에 경로를 /save를 하게 되면 절대 경로로 http://localhost:8080/save로 들어가 된다.
 - /save가 아닌 / 빼고 save를 하게 되면 상대 경로로 현재 url 속한 계층에 붙는다. http://localhost:8080/servlet-mvc/members/save
 
+# MVC 패턴 - 한계
+
+#### MVC 컨트롤러의 단점
+1. 포워드 중복
+   - view로 이동하는 코드가 항상 중복 호출 되어야 한다. 물론 이 부분을 메서드로 공통화해도 되지만, 해당 메서드로 항상 직접 호출 해야한다.
+```
+RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+dispatcher.forward(request, response); // 서블릿에서 jsp 호출
+```
+
+2. ViewPath에 중복
+   - prefix : /WEB-INF/views/
+   - suffix : .jsp
+   - jsp가 아닌 thymeleaf 같은 다른 뷰로 변경한다면 전체 코드를 다 변경 해야한다.
+
+```
+String viewPath = "/WEB-INF/views/new-form.jsp";
+```
+
+4. 사용하지 않는 코드
+
+5. 공통 처리가 어렵다
+   - 기능이 복잡해질 수 록 컨트롤러에서 공통으로 처리해야 하는 부분이 점점 더 많이 증가할 것 이다. 단순히 공통 기능을 메서드로 뽑으면 될 것 같지만, 결과적으로 해당 메서들를 항상 호출해야 하고, 실수로 호출하지 않으면 문제가 될 것이다. 그리고 호출하는 것 자체도 중복이다.
+  
+6. 정리하면 공통 처리가 어렵다는 문제가 있다.
+   - 이 문제를 해결하려면 컨트롤러 호출 전에 공통 기능을 처리해야 한다. 소위 수문장 역할을 하는 기능이 필요하다. 프론트 컨트롤러 패턴을 도입하면 이런 문제를 깔끔하기 해결 할 수 있다.
 
 
 
