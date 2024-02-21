@@ -322,6 +322,67 @@ String viewPath = "/WEB-INF/views/new-form.jsp";
 - 스프링 웹 MVC의 핵심도 바로 FrontController
 - 스프링 웹 MVC의 DispatcherServlet이 FrontController 패턴으로 구현되어 있음
 
+# 프론트 컨트롤러 도입 - v1
+
+##### 이미지 출처 : 인프런- 김영한 스프링MVC1편
+![image](https://github.com/wjdwodnr5452/servlet/assets/90361061/02066137-e5e7-46bd-94fc-c640fa9658d1)
+
+```
+public interface ControllerV1 {
+    void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+}
+```
+- 서블릿과 비슷한 모양의 컨트롤러 인터페이스를 도입하고 각 컨트롤러들은 이 인터페이스를 구현 하면된다.
+```
+public class MemberFormControllerV1 implements ControllerV1 {
+    @Override
+    public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String viewPath = "/WEB-INF/views/new-form.jsp";
+        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+        dispatcher.forward(request, response); // 서블릿에서 jsp 호출
+    }
+}
+```
+
+froncontroller 구현
+
+```
+@WebServlet(name = "frontControllerServletV1", urlPatterns = "/front-controller/v1/*")
+public class FrontControllerServletV1 extends HttpServlet {
+
+    private Map<String, ControllerV1> controllerV1Map = new HashMap<>();
+
+    public FrontControllerServletV1() {
+        controllerV1Map.put("/front-controller/v1/members/new-form", new MemberFormControllerV1());
+        controllerV1Map.put("/front-controller/v1/members/save", new MemberSaveControllerV1());
+        controllerV1Map.put("/front-controller/v1/members", new MemberListControllerV1());
+    }
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("frontControllerServletV1");
+        String requestURI = request.getRequestURI();
+        ControllerV1 controller = controllerV1Map.get(requestURI);
+        if (controller == null) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+        controller.process(request, response);
+    }
+}
+```
+#### urlPatterns
+- urlPatterns = "/front-controller/v1/*"  : /front-controller/v1를 포함한 하위 모든 요청은 이 서블릿에서 받아들인다.
+
+#### controllerMap
+- key : 매핑 URL
+- value : 호출될 컨트롤러
+
+
+
+
+
+
 
   
 
