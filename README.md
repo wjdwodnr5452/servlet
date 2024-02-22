@@ -378,6 +378,43 @@ public class FrontControllerServletV1 extends HttpServlet {
 - key : 매핑 URL
 - value : 호출될 컨트롤러
 
+# view 분리 - v2
+
+##### 이미지 출처 : 인프런- 김영한 스프링MVC1편
+![image](https://github.com/wjdwodnr5452/servlet/assets/90361061/ce91558b-cfad-49d8-be7a-7162b9888b57)
+
+```
+@Override
+public MyView process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  return new MyView("/WEB-INF/views/new-form.jsp");
+}
+```
+- 각 컨트롤러는 복잡한 dispatcher.forward()를 직접 생성해서 호출 하지 않아도 된다.
+- MyView 객체를 생성하고 거기에 뷰 이름만 넣고 반환하면 된다.
+
+  
+```
+@Override
+  protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+      String requestURI = request.getRequestURI();
+
+      ControllerV2 controller = controllerV2Map.get(requestURI);
+
+      if (controller == null) {
+          response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+          return;
+      }
+      MyView view = controller.process(request, response);
+      view.render(request,response);
+  }
+```
+
+- ControllerV2 반환 타입이 MyView 이 므로 프론트 컨트롤러는 컨트롤러의 호출 결과로 MyView를 반환 받는다.
+- view.render()를 호출하면 forward 로직을 수행해서 jsp가 실행
+
+  
+
 
 
 
