@@ -413,7 +413,7 @@ public MyView process(HttpServletRequest request, HttpServletResponse response) 
 - ControllerV2 반환 타입이 MyView 이 므로 프론트 컨트롤러는 컨트롤러의 호출 결과로 MyView를 반환 받는다.
 - view.render()를 호출하면 forward 로직을 수행해서 jsp가 실행
 
-# Model 추가 - v3
+# Model 추가 - v3 (복습)
 #### 서블릿 종속성 제거
 - 요청 파라미터 정보는 자바의 Map으로 대신 넘기도록 하면 지금 구조에서는 컨트롤러가 서블릿 기술을 몰라도 동작 할 수 있다. request 객체를 Model로 사용하는 대신에 별도 Model 객체를 만들어서 반환하면 된다.
 
