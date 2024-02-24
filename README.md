@@ -424,6 +424,14 @@ public MyView process(HttpServletRequest request, HttpServletResponse response) 
 - "/WEB-INF/views/new-form.jsp" -> "new-form.jsp"
 
 
+# 단순하고 실용적인 컨트롤러 - v4
+
+##### 이미지 출처 : 인프런- 김영한 스프링MVC1편
+![image](https://github.com/wjdwodnr5452/servlet/assets/90361061/58023ab7-cc8f-4075-8a26-7ba3fd547792)
+- 기본적인 구조는 v3와 같다. 대신에 컨트롤러가 ModelView를 반환하지 않고, ViewName 만 반환한다.
+
+
+
   
 
 
