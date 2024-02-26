@@ -497,6 +497,11 @@ public MyView process(HttpServletRequest request, HttpServletResponse response) 
 - 핸들러 어댑터 : org.springframework.web.servlet.HandlerAdapter
 - 뷰 리졸버 : org.springframework.web.servlet.ViewResolver
 - 뷰 : org.springframework.web.servlet.View
+
+
+# 핸들러 맵핑과 핸들러 어댑터
+
+
  
 
 
