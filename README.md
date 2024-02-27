@@ -378,6 +378,16 @@ public class FrontControllerServletV1 extends HttpServlet {
 - key : 매핑 URL
 - value : 호출될 컨트롤러
 
+#### RequestDispatcher
+- 서블릿에서 다른 서블릿이나 jsp로 제어를 전달하고 요청과 응답데이터를 공유할 수 있게 해주는 인터페이스이다.
+- 브라우저에서 사용자가 전달한 request를 다른 서블릿, jsp에서 똑같은 request를 받을 수 있다.
+
+#### getRequestDispatcher
+- 해당 메소드는 request를 보낼 경로
+
+
+
+
 # view 분리 - v2
 
 ##### 이미지 출처 : 인프런- 김영한 스프링MVC1편
