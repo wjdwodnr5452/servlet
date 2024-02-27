@@ -413,7 +413,7 @@ public MyView process(HttpServletRequest request, HttpServletResponse response) 
 - ControllerV2 반환 타입이 MyView 이 므로 프론트 컨트롤러는 컨트롤러의 호출 결과로 MyView를 반환 받는다.
 - view.render()를 호출하면 forward 로직을 수행해서 jsp가 실행
 
-# Model 추가 - v3 (복습)
+# Model 추가 - v3 
 #### 서블릿 종속성 제거
 - 요청 파라미터 정보는 자바의 Map으로 대신 넘기도록 하면 지금 구조에서는 컨트롤러가 서블릿 기술을 몰라도 동작 할 수 있다. request 객체를 Model로 사용하는 대신에 별도 Model 객체를 만들어서 반환하면 된다.
 
@@ -431,7 +431,7 @@ public MyView process(HttpServletRequest request, HttpServletResponse response) 
 - 기본적인 구조는 v3와 같다. 대신에 컨트롤러가 ModelView를 반환하지 않고, ViewName 만 반환한다.
 
 
-# 유연한 컨트롤러1 - v5 (정리 추가)
+# 유연한 컨트롤러1 - v5 
 
 ##### 이미지 출처 : 인프런- 김영한 스프링MVC1편
 ![image](https://github.com/wjdwodnr5452/servlet/assets/90361061/b51348c5-34c0-4e56-8ad5-075c508da4a7)
@@ -497,6 +497,11 @@ public MyView process(HttpServletRequest request, HttpServletResponse response) 
 - 핸들러 어댑터 : org.springframework.web.servlet.HandlerAdapter
 - 뷰 리졸버 : org.springframework.web.servlet.ViewResolver
 - 뷰 : org.springframework.web.servlet.View
+
+
+# 핸들러 맵핑과 핸들러 어댑터 (정리)
+
+
  
 
 
