@@ -40,6 +40,6 @@ public class FrontControllerServletV2 extends HttpServlet {
             return;
         }
         MyView view = controller.process(request, response);
-        view.render(request,response);
+        view.render(request,response); // render 메소드를 통해 RequestDispatcher를 공통으로 처리
     }
 }
