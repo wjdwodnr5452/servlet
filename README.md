@@ -512,7 +512,29 @@ public MyView process(HttpServletRequest request, HttpServletResponse response) 
 # 핸들러 맵핑과 핸들러 어댑터 (정리)
 
 
- 
+# 뷰 리졸버
+- 스프링 부트는 InteralResourceViewResolver 라는 뷰 리졸버를 자동으로 등록하는데 이때 application.properties에 등록한 spring.mvc.view.prefix, spring.mvc.view.suffix 설정 정보를 사용해서 등록한다.
+
+##### 스프링 부트가 자동 등록하는 뷰 리졸버
+```
+1 = BeanNameViewResolver : 빈 이름으로 뷰를 찾아서 반환한다.
+2 = InternalResourceViewResolver : jsp를 처리할 수 있는 뷰를 반환한다.
+```
+
+1. 핸들러 어댑터 호출
+- 핸들러 어댑터를 통해 new-form 이라는 논리  뷰 이름을 획득한다.
+2. ViewResolver 호출
+- new-form 이라는 뷰 이름으로 viewResolver를 순서대로 호출한다.
+- BeanNameViewResolver 는 new-form 이라는 이름의 스프링 빈으로 등록된 뷰를 찾아야 하는데 없다.
+- InternalResourceViewResolver가 호출된다.
+3. InternalResourceViewResolver가
+- InternalResourceViewResolver를 반환
+4. 뷰 - InternalResourceView
+- InternalResourceView는 jsp 처럼 포워드 forward()를 호출해서 처리할 수 있는 경우에 사용한다.
+5. view.render()
+- view.render() 가 호출되는 InternalResourceView는 forward()를 사용해서 jsp를 실행한다.
+
+  
 
 
 
