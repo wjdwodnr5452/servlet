@@ -557,7 +557,21 @@ public MyView process(HttpServletRequest request, HttpServletResponse response) 
 RequestMappingHandlerMapping은 스프링 빈 중에서 @RequestMapping 또는 @Controller가 클래스 레벨에 붙어 있는 경우에 매핑 정보롤 인식
 
 
+# 스프링 MVC - 실용적인 방식
 
+##### Model 파라미터
+- save(), members() 를 보면 Model을 파라미터로 받는 것을 확인 할 수 있다.
+
+##### ViewName 직접 반환
+- 뷰의 논리 이름을 반환할 수 있다.
+
+##### @RequestParam 사용
+- 스프링은 HTTP 요청 파라미터를 @RequestParam 으로 받을 수 있다.
+- @RequestParam("username")은 request.getParameter("username") 와 같은 코드라 생각하면 된다.
+
+##### @RequestMapping -> @GetMapping, @PostMapping
+- @RequestMapping은 URL 만 매칭하는 것이 아니라, HTTP Method도 함께 구분할 수 있다.
+  
 
 
 
